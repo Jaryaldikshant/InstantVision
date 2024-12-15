@@ -39,7 +39,4 @@ RAZORPAY_KEY_SECRET="demo_secret_key"
 
 CURRENCY="INR"
 
-## Screenshots
-
-![](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
