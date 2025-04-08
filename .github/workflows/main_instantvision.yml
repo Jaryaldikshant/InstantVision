@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     permissions:
       contents: read #This is required for actions/checkout
 
@@ -28,15 +28,12 @@ jobs:
           npm install
           npm run build --if-present
           npm run test --if-present
-
-      - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
-
+      
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: release.zip
+          path: .
 
   deploy:
     runs-on: ubuntu-latest
@@ -53,20 +50,17 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: node-app
-
-      - name: Unzip artifact for deployment
-        run: unzip release.zip
       
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_0BC0E8A0AEEC4D84810509998F5E2D0D }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_CB64DA37B346412E9078F7A188B4E353 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_2C4EBBD48157489B855798DFC5B72AA3 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_4E5CA5D961684640B30A510198B37CD9 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_EA2A70FB03F343B885E6D102FF89DAEE }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_6611407AD3A845B7BFADE6737C0F440F }}
 
       - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
+        id: deploy-to-webapp
         with:
           app-name: 'InstantVision'
           slot-name: 'Production'
