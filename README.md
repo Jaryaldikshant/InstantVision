@@ -2,7 +2,7 @@
 # Imagify - Ai Image Generator
 
 Converts user text input to image using Ai.
-AI image generators have become powerful tools, enabling users to create complex and highly detailed images from textual descriptions
+AI image generators have become powerful tools, enabling users to create complex and highly detailed images from textual descriptions.
 
 ## How to run
 
@@ -39,7 +39,6 @@ RAZORPAY_KEY_SECRET="demo_secret_key"
 
 CURRENCY="INR"
 
-## Project Link ##
-Link - https://imagify-livid.vercel.app  ( Use Chrome for better experience )
+
 
 
